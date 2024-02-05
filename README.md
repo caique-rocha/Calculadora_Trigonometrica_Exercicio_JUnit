@@ -1,4 +1,5 @@
-# Calculadora Trigonométrica em Kotlin
+# Calculadora Trigonométrica (Testes Kotlin - JUnit)
+### Atividade da disciplina de Engenharia De Software - 2023/2 UFSCar
 
 
 Simples projeto com objetivo de aprendizagem sobre a utilização de testes unitários usando o framework JUnit.
@@ -51,7 +52,36 @@ Para o ângulo de 90° é utilizado `assertThrows` para verificar se uma excess�
     }
 ```
 
-## Para realizar os testes da funcionades utilizar o comando 
+## Atualização
+### Melhorias realizadas
+
+Com o intuído de testar a funcionalidade `Actions` ao realizar um push e também de deixar o código mais conciso, os 9 testes do commit 
+[fc4be5f...](https://github.com/caique-rocha/Calculadora_Trigonometrica_Exercicio_JUnit/commit/fc4be5f02296fcf0d79c9953363e6c30e4618267#diff-deea627bb51f6859e614c11e39fea79aff1dbb744401f855178094ef13ed18e1)
+foram substituído for um loop interando por uma lista de data class `AnguloNotavel`.
+
+```kotlin
+    /**
+     * Testa os cálculos de seno, cosseno e tangente para os ângulos notáveis.
+     *
+     * Utiliza a lista de ângulos notáveis definida em [angulosNotaveis].
+     */
+    @Test
+    fun testAngulosNotaveis() {
+        // Para cada ângulo notável na lista
+        angulosNotaveis.forEach { anguloNotavel ->
+    
+            val angulo = Math.toRadians(anguloNotavel.angulo)
+            // Verifica se o cálculo do seno está correto
+            assertEquals(anguloNotavel.seno, Seno(angulo).resultado(), TOLERANCIA)
+            // Verifica se o cálculo do cosseno está correto
+            assertEquals(anguloNotavel.cosseno, Cosseno(angulo).resultado(), TOLERANCIA)
+            // Verifica se o cálculo da tangente está correto
+            assertEquals(anguloNotavel.tangente, Tangente(angulo).resultado(), TOLERANCIA)
+        }
+    }
+```
+
+## Os testes podem ser executados manualmente na guia `Actions` ou com o comando:
 
 ```
 ./gradlew test
