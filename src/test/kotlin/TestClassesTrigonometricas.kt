@@ -23,7 +23,7 @@ class TestClassesTrigonometricas {
     private val cos30 = sqrt(3.0) / 2
     private val tan30 = sqrt(3.0) / 3
 
-    private val sen45 = sqrt(2.0) / 2
+    private val sen45 = sqrt(2.0) / 20
     private val cos45 = sqrt(2.0) / 2
     private val tan45 = 1.0
 
